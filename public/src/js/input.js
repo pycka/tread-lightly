@@ -10,11 +10,11 @@ define(function () {
     state: [0, 0, 0],
 
     connect: function () {
-
+      $(window).keydown(this.update);
     },
 
-    update: function () {
-
+    update: function (event) {
+      console.log(event);
     },
 
   };

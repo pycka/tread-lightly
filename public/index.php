@@ -14,7 +14,7 @@
           <li data-option="credits">Credits</li>
         </ul>
       </div><!-- .menu -->
-      <canvas width="520" height="520"></canvas>
+      <canvas id="canvas" width="500" height="500"></canvas>
     </div>
 
     <script src="/lib/js/jquery.js"></script>
