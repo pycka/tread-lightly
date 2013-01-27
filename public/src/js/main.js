@@ -22,16 +22,26 @@ define(
             }
             $('#next-map').show();
             $('#continue').hide();
-            $('#overlay').show();
+            showSplash();
         };
 
         data.onLevelFailure = function(){
             $('#next-map').hide();
             $('#continue').hide();
             $('#msg-box').text('Przegrana! :(');
-            $('#overlay').show();
+            showSplash();
         };
+        function showSplash(){
+            data.sounds.background.setVolume(30);
+            data.sounds.heartBeat.pause();
+            $('#overlay').show();
+        }
 
+        function hideSplash(){
+            $('#overlay').hide();
+            data.sounds.background.setVolume(10);
+            data.sounds.heartBeat.setVolume(80).loop().play();
+        }
         $('#new-game').click(function(){
             data.mapId = 0;
             var map = data.maps[data.mapId]();
@@ -39,7 +49,7 @@ define(
             data.world.loadMap(map);
             data.world.start();
             loop.start(); // temporary
-            $('#overlay').hide();
+            hideSplash();
         });
 
         $('#next-map').click(function(){
@@ -52,20 +62,21 @@ define(
             data.world.loadMap(map);
             data.world.start();
             loop.start(); // temporary
-            $('#overlay').hide();
+            hideSplash()
         });
 
         $('#creadits').click(function(){
             $('#creadits-list').toggleClass('visible')
         });
+
         $('#show-menu').click(function(){
             loop.stop(); // temporary
             //$('#next-map').hide();
             $('#continue').show();
-            $('#overlay').show();
+            showSplash();
         });
         $('#continue').click(function(){
-            $('#overlay').hide();
             loop.start(); // temporary
+            hideSplash()
         });
 });
