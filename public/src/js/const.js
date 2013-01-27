@@ -19,10 +19,13 @@ define(function constants() {
 
     PLAYER_VELOCITY:       7,
     PLAYER_VELOCITY_DAMP:  7,
+    PLAYER_SIGHT_RANGE:    100,
 
     FINISH_POINT_SIZE:     1,
 
     ACTOR_TYPE_PLAYER:     0,
-    ACTOR_TYPE_ZOMBIE:     1
+    ACTOR_TYPE_ZOMBIE:     1,
+
+    ZOMBIE_RADIUS:         1,
   };
 });

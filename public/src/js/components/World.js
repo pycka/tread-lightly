@@ -71,7 +71,7 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, con) 
       var zombieBody = this.boxWorld.CreateBody(zombieBodyDef);
       var zombieFixDef = new b2FixtureDef();
       zombieFixDef.restitution = 1;
-      zombieFixDef.shape = new b2CircleShape(1);
+      zombieFixDef.shape = new b2CircleShape(con.ZOMBIE_RADIUS);
       zombieBody.CreateFixture(zombieFixDef);
       zombieBody.SetLinearVelocity(zombie.v);
 
@@ -97,7 +97,6 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, con) 
     var actor = new Actor();
     actor.setBoxBody(finishBody);
 
-    this.actors.push(actor);
     this.finishActor = actor;
   };
 
@@ -117,6 +116,7 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, con) 
     actor.setId(0);   
     actor.setBoxBody(playerBody);
     this.playerActor = actor;
+    this.actors.push(actor);
   };  
 
   World.prototype.loadMap = function (map) {
