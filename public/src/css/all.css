@@ -7,9 +7,11 @@
     url(/lib/fonts/Nosifer-Regular.woff) format('woff');
 }
 
+html {
+  background: #aaa;  
+}
 body {
   margin: 0 auto;
-  /*background: #000;*/
   font: 14px/20px Nosifer, Georgia;
   background: #aaa;
 }
