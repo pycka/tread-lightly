@@ -14,6 +14,24 @@ define(
         data.loadSounds();
         data.sounds.background.setVolume(30).play();
 
+        data.onLevelSuccess = function(){
+            if (data.mapId >= data.maps.length -1) {
+                $('#msg-box').text('Zwycięstwo! Pokanałeś grę!');
+            } else {
+                $('#msg-box').text('Zwycięstwo! :)');
+            }
+            $('#next-map').show();
+            $('#continue').hide();
+            $('#overlay').show();
+        };
+
+        data.onLevelFailure = function(){
+            $('#next-map').hide();
+            $('#continue').hide();
+            $('#msg-box').text('Przegrana! :(');
+            $('#overlay').show();
+        };
+
         $('#new-game').click(function(){
             data.mapId = 0;
             var map = data.maps[data.mapId]();
