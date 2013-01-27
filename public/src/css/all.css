@@ -111,3 +111,9 @@ h1 {
 #creadits-list > div.about {
   padding: 10px;
 }
+
+#msg-box{
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
