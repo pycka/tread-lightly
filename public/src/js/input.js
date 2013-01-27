@@ -7,6 +7,10 @@ define(['const'], function (constants) {
       $(window).keyup(this.releaseKey)
     },
 
+    clear: function () {
+      this.keys = 0;
+    },
+
     recordKey: function (event) {
       var keyCode = event.which;
 

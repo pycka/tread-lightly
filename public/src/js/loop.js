@@ -24,6 +24,7 @@ define(['display', 'input', 'data', 'logic'], function (display, input, data, lo
 
     stop: function () {
       this.run = false;
+      input.clear();
       this.requestId && cancelAnimationFrame(this.requestId);
     },
 
@@ -32,7 +33,7 @@ define(['display', 'input', 'data', 'logic'], function (display, input, data, lo
       logic.checkInput();
       if (loop.run) {
         world.boxWorld.Step(1/60, 8, 4);
-        logic.checkWorld();
+        logic.checkWorld(loop);
         display.draw(world);
 
         requestAnimationFrame(step);

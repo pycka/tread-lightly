@@ -23,10 +23,12 @@ define(function constants() {
     PLAYER_SIGHT_RANGE:    120,
 
     FINISH_POINT_SIZE:     1,
+    FINISH_WIN_RANGE:      4, 
 
     ACTOR_TYPE_PLAYER:     0,
     ACTOR_TYPE_ZOMBIE:     1,
 
     ZOMBIE_RADIUS:         2,
+    ZOMBIE_KILL_RANGE:     3.5
   };
 });

@@ -1,4 +1,5 @@
-define(['input', 'data', 'loop', 'const'], function (input, data, loop, con) {
+define(['input', 'data', 'const'], function (input, data, con) {
+  var Distance = Box2D.Common.Math.b2Math.Distance;
 
   var logic = {
 
@@ -25,8 +26,24 @@ define(['input', 'data', 'loop', 'const'], function (input, data, loop, con) {
       // @todo handle Escape and other
     },
 
-    checkWorld: function () {
+    checkWorld: function (loop) {
+      // look for success (player finds gold)
+      var playerPos = data.world.playerActor.boxBody.GetPosition();
+      var finishPos = data.world.finishActor.boxBody.GetPosition();
 
+      if (Distance(playerPos, finishPos) < con.FINISH_WIN_RANGE) {
+        alert('Success');
+        loop.stop();
+      }
+
+      // watch out for zombies
+      var zombies = data.world.zombies;
+      for (var i = 0, size = zombies.length ; i < size ; ++i) {
+        if (Distance(playerPos, zombies[i].boxBody.GetPosition()) < con.ZOMBIE_KILL_RANGE) {
+          alert('Failure...');
+          loop.stop();
+        }
+      }
     }
 
   };
