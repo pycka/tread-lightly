@@ -8,6 +8,8 @@ Use WSAD or arrow keys to navigate your hero through
 three levels of labyrinth and find great treasure! But
 have eyes wide open, because danger stalks in the shadows.
 
+Working demo: http://treadlightly.pycka.com/
+
 People
 ------
 
