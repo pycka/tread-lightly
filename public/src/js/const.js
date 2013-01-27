@@ -18,6 +18,11 @@ define(function constants() {
     KEY_MOVE_MASK: 15,
 
     PLAYER_VELOCITY:       7,
-    PLAYER_VELOCITY_DAMP:  7
+    PLAYER_VELOCITY_DAMP:  7,
+
+    FINISH_POINT_SIZE:     1,
+
+    ACTOR_TYPE_PLAYER:     0,
+    ACTOR_TYPE_ZOMBIE:     1
   };
 });

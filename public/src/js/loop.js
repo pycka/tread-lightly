@@ -17,7 +17,7 @@ define(['display', 'input', 'data', 'logic'], function (display, input, data, lo
 
     start: function () {
       this.run       = true;
-      this.world     = data.world.boxWorld;
+      this.world     = data.world;
       this.startTime = this.now();
       this.step();
     },
@@ -31,12 +31,12 @@ define(['display', 'input', 'data', 'logic'], function (display, input, data, lo
       var world = loop.world;
       logic.checkInput();
       if (loop.run) {
-        world.Step(1/60, 8, 4);
+        world.boxWorld.Step(1/60, 8, 4);
         logic.checkWorld();
         display.draw(world);
 
         requestAnimationFrame(step);
-        world.ClearForces();
+        world.boxWorld.ClearForces();
       }
     },
 

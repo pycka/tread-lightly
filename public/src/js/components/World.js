@@ -1,4 +1,4 @@
-define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, constants) {
+define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, con) {
   // Shortcuts
   var b2Vec2       = Box2D.Common.Math.b2Vec2;
   var b2BodyDef    = Box2D.Dynamics.b2BodyDef;
@@ -25,9 +25,9 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, const
     var borderBody = this.boxWorld.CreateBody(borderDef);
 
     var vec0 = new b2Vec2(0, 0);
-    var vec1 = new b2Vec2(constants.MAP_WIDTH, 0);
-    var vec2 = new b2Vec2(constants.MAP_WIDTH, constants.MAP_HEIGHT);
-    var vec3 = new b2Vec2(0, constants.MAP_HEIGHT);
+    var vec1 = new b2Vec2(con.MAP_WIDTH, 0);
+    var vec2 = new b2Vec2(con.MAP_WIDTH, con.MAP_HEIGHT);
+    var vec3 = new b2Vec2(0, con.MAP_HEIGHT);
     var borderFixDef = new b2FixtureDef();
     borderFixDef.restitution = 1;
     borderFixDef.shape = new b2PolygonShape();
@@ -57,6 +57,8 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, const
       wallFixDef.shape = new b2PolygonShape();
       wallFixDef.shape.SetAsBox(hx, hy);
       wallBody.CreateFixture(wallFixDef);
+
+      this.walls.push(wall);
     }
   };
 
@@ -74,6 +76,8 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, const
       zombieBody.SetLinearVelocity(zombie.v);
 
       var actor = new Actor();
+      actor.setType(con.ACTOR_TYPE_ZOMBIE);
+      actor.setId(i);
       actor.setBoxBody(zombieBody);
       
       this.actors.push(actor);      
@@ -87,7 +91,7 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, const
     var finishFixDef = new Box2D.Dynamics.b2FixtureDef();
     finishFixDef.restitution = 1;
     finishFixDef.shape = new b2PolygonShape();
-    finishFixDef.shape.SetAsBox(1, 1);
+    finishFixDef.shape.SetAsBox(con.FINISH_POINT_SIZE, con.FINISH_POINT_SIZE);
     finishBody.CreateFixture(finishFixDef);
 
     var actor = new Actor();
@@ -105,10 +109,12 @@ define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, const
     var playerFixDef = new Box2D.Dynamics.b2FixtureDef();
     playerFixDef.restitution = 1;
     playerFixDef.shape = new b2CircleShape(1);
-    playerBody.SetLinearDamping(constants.PLAYER_VELOCITY_DAMP);
+    playerBody.SetLinearDamping(con.PLAYER_VELOCITY_DAMP);
     playerBody.CreateFixture(playerFixDef);
 
     var actor = new Actor();
+    actor.setType(con.ACTOR_TYPE_PLAYER);
+    actor.setId(0);   
     actor.setBoxBody(playerBody);
     this.playerActor = actor;
   };  

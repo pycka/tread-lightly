@@ -1,6 +1,7 @@
 define(['/lib/js/box2d.js'], function () {
 
   function Map() {
+    this.id      = null;
     this.walls   = [];
     this.zombies = [];
     this.finishPoint = { x: 0, y: 0 };
@@ -43,6 +44,10 @@ define(['/lib/js/box2d.js'], function () {
   Map.prototype.setFinishPoint = function (x, y) {
     this.finishPoint.x = x;
     this.finishPoint.y = y;
+  };
+
+  Map.prototype.setId = function (id) {
+    this.id = id;
   };
 
   return Map;

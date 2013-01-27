@@ -14,7 +14,9 @@ define(['net', 'display', 'input', 'loop', 'data', 'components/World'],
   onReady();
 
   function onReady() {
-    var map = data.maps[0]();
+    var mapId = 0;
+    var map = data.maps[mapId]();
+    map.setId(mapId);
 
     data.world = new World();
     data.world.loadMap(map);
