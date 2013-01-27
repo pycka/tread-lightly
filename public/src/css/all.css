@@ -1,11 +1,9 @@
 #game {
-  width:  640px;
-  height: 480px;
+  width:  500px;
+  height: 500px;
 
   margin:   0 auto;
   position: relative;
-
-  background: blue;
 }
 #game > .menu {
   display:  none;

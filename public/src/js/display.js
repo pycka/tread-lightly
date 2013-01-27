@@ -1,14 +1,14 @@
 define(function () {
 
   var display = {
-    canvas: null,
+    context: null,
 
     connect: function (canvasElement) {
-      this.canvas = canvasElement;
+      this.context = canvasElement.getContext('2d');
     },
 
     draw: function (world) {
-
+      world.DrawDebugData();
     }
   };
 

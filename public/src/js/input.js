@@ -1,22 +1,42 @@
-define(function () {
-  var KEY_UP      = 1;
-  var KEY_DOWN    = 2;
-  var KEY_LEFT    = 4;
-  var KEY_RIGHT   = 8;
-  var MOUSE_CLICK = 16;
-
+define(['const'], function (constants) {
   var input = {
-    // mx, my, button map
-    state: [0, 0, 0],
+    keys:  0,
 
     connect: function () {
-
+      $(window).keydown(this.update);
     },
 
-    update: function () {
+    update: function (event) {
+      switch (event.which) {
+        case 65:
+        case 97:
+          input.keys |= constants.KEY_LEFT;
+          break;
 
+        case 68:
+        case 100:
+          input.keys |= constants.KEY_RIGHT;
+          break;
+
+        case 87:
+        case 119:
+          input.keys |= constants.KEY_UP;
+          break;
+
+        case 83:
+        case 115:
+          input.keys |= constants.KEY_DOWN;
+          break;
+
+      }
     },
+    
+    getKeys: function () {
+      var keys = this.keys;
+      this.keys = 0;
 
+      return keys;
+    }
   };
 
   return input;
