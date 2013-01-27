@@ -1,7 +1,7 @@
 define(['components/Map', 'components/World'], function (Map, World) {
   var MAP_SIZE = 50;
 
-  var data = {
+  var data = window.data = {
     world: null,
     maps: {
       0: function m0() {
@@ -21,7 +21,6 @@ define(['components/Map', 'components/World'], function (Map, World) {
     },
 
   };
-
 
   return data;
 });

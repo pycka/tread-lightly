@@ -16,7 +16,7 @@ define(function () {
     update: function (event) {
       console.log(event);
     },
-
+    
   };
 
   return input;

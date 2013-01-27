@@ -101,6 +101,7 @@ define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
   World.prototype.genPlayer = function (startingPoint) {
     var playerBodyDef = new b2BodyDef();
     playerBodyDef.position.Set(startingPoint.x, startingPoint.y);
+    playerBodyDef.type = B2_DYNAMICBODY;
     var playerBody = this.boxWorld.CreateBody(playerBodyDef);
     var playerFixDef = new Box2D.Dynamics.b2FixtureDef();
     playerFixDef.restitution = 1;
@@ -130,18 +131,6 @@ define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
     debugDraw.SetLineThickness(2.0);
     debugDraw.SetFlags(b2DebugDraw.e_shapeBit | b2DebugDraw.e_jointBit);
     this.boxWorld.SetDebugDraw(debugDraw);
-
-    window.setInterval(update, 1000 / 60);
-
-    function update() {
-      world.Step(1 / 60, 10, 10);
-      world.DrawDebugData();
-      world.ClearForces();
-    };
-  };
-
-  World.prototype.stop = function () {
-    // @todo
   };
 
   return World;
