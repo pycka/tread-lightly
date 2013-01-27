@@ -24,3 +24,59 @@
   left:     0;
   z-index:  1;
 }
+
+#overlay
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+    display: none;
+    z-index: 10;
+}
+#menu
+{
+    width: 550px;
+    background: #121212;
+    border: #333333 solid 5px;
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    border-radius: 10px;
+    margin:20px auto;
+}
+#menu ul {
+    width: 100%;
+    padding:0;
+}
+#menu ul > li {
+    display:block;
+    width: 90%;
+    text-align:center;
+    border: 5px solid #404040;
+    border-radius: 10px;
+    list-style: none;
+    margin:10px auto 0 auto;
+    background: #555555;
+    cursor: pointer;
+}
+#menu ul > li:first-child {
+    margin:0 auto 0 auto;
+}
+#menu ul > li:hover{
+    background: #888888;
+}
+#menu #creadits-list{
+    display: none;
+    width: 90%;
+    text-align:left;
+    border: 5px solid #404040;
+    border-radius: 10px;
+    list-style: none;
+    margin:10px auto 0 auto;
+    background: #555555;
+    cursor: default;
+}
+#menu #creadits-list.visible {
+    display: block;
+}
