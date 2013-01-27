@@ -1,10 +1,27 @@
+@font-face {
+  font-family: 'Nosifer';
+  font-style:  normal;
+  font-weight: 400;
+  src: local('Nosifer'), local('Nosifer-Regular'), 
+    url(/lib/fonts/Nosifer-Regular.ttf) format('ttf'), 
+    url(/lib/fonts/Nosifer-Regular.woff) format('woff');
+}
+
 body {
+  margin: 0 auto;
   /*background: #000;*/
-  font-size: 14px;
+  font: 14px/20px Nosifer, Georgia;
   background: #aaa;
 }
 h1 {
-  font-size: 110%;
+  margin: 0;
+  position: relative;
+  top:    100px;
+
+  font-size: 180%;
+}
+h2 {
+  font-size: 130%;
 }
 
 #assets {
