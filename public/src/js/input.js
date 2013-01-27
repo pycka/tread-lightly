@@ -3,39 +3,46 @@ define(['const'], function (constants) {
     keys:  0,
 
     connect: function () {
-      $(window).keydown(this.update);
+      $(window).keydown(this.recordKey);
+      $(window).keyup(this.releaseKey)
     },
 
-    update: function (event) {
-      switch (event.which) {
-        case 65:
-        case 97:
-          input.keys |= constants.KEY_LEFT;
-          break;
+    recordKey: function (event) {
+      var keyCode = event.which;
 
-        case 68:
-        case 100:
-          input.keys |= constants.KEY_RIGHT;
-          break;
+      if (constants.KEY_UP_CODES[keyCode]) {
+        input.keys |= constants.KEY_UP;
+      }
+      else if (constants.KEY_DOWN_CODES[keyCode]) {
+        input.keys |= constants.KEY_DOWN;
+      }
+      if (constants.KEY_LEFT_CODES[keyCode]) {
+        input.keys |= constants.KEY_LEFT;
+      }
+      else if (constants.KEY_RIGHT_CODES[keyCode]) {
+        input.keys |= constants.KEY_RIGHT;
+      }
+    },
 
-        case 87:
-        case 119:
-          input.keys |= constants.KEY_UP;
-          break;
+    releaseKey: function (event) {
+      var keyCode = event.which;
 
-        case 83:
-        case 115:
-          input.keys |= constants.KEY_DOWN;
-          break;
-
+      if (constants.KEY_UP_CODES[keyCode]) {
+        input.keys &= ~constants.KEY_UP;
+      }
+      else if (constants.KEY_DOWN_CODES[keyCode]) {
+        input.keys &= ~constants.KEY_DOWN;
+      }
+      if (constants.KEY_LEFT_CODES[keyCode]) {
+        input.keys &= ~constants.KEY_LEFT;
+      }
+      else if (constants.KEY_RIGHT_CODES[keyCode]) {
+        input.keys &= ~constants.KEY_RIGHT;
       }
     },
     
     getKeys: function () {
-      var keys = this.keys;
-      this.keys = 0;
-
-      return keys;
+      return this.keys;
     }
   };
 
