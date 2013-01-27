@@ -11,8 +11,8 @@ define(
         input.connect();
         display.connect(document.getElementById('canvas'));
 
-        // Play (should defer until server connection is up if co-op implemented).
-
+        data.loadSounds();
+        data.sounds.background.setVolume(30).play();
 
         $('#new-game').click(function(){
             data.mapId = 0;
