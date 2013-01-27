@@ -1,6 +1,6 @@
 define(
-    ['net', 'display', 'input', 'loop', 'data', 'components/World'],
-    function (net, display, input, loop, data, World) {
+    ['net', 'display', 'input', 'loop', 'data', 'const', 'components/World'],
+    function (net, display, input, loop, data, con, World) {
 
         var server = {
             addr:'treadlightly',
@@ -40,7 +40,9 @@ define(
         function hideSplash(){
             $('#overlay').hide();
             data.sounds.background.setVolume(10);
-            data.sounds.heartBeat.setVolume(80).loop().play();
+            data.sounds.heartBeat.setVolume(100);
+            data.sounds.heartBeat.setSpeed(con.HEARTBIT_BASE);
+            data.sounds.heartBeat.loop().play();
         }
         $('#new-game').click(function(){
             data.mapId = 0;

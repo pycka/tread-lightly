@@ -29,6 +29,10 @@ define(function constants() {
     ACTOR_TYPE_ZOMBIE:     1,
 
     ZOMBIE_RADIUS:         2,
-    ZOMBIE_KILL_RANGE:     3.5
+    ZOMBIE_KILL_RANGE:     3.5,
+
+    HEARTBIT_RISE_RANGE:   12,
+    HEARTBIT_BASE:         0.8,
+    HEARTBIT_BOOST:        2, 
   };
 });

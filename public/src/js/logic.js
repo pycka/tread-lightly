@@ -38,11 +38,21 @@ define(['input', 'data', 'const'], function (input, data, con) {
 
             // watch out for zombies
             var zombies = data.world.zombies;
+            var minDistance = con.HEARTBIT_RISE_RANGE;
             for (var i = 0, size = zombies.length; i < size; ++i) {
-                if (Distance(playerPos, zombies[i].boxBody.GetPosition()) < con.ZOMBIE_KILL_RANGE) {
+                var distance = Distance(playerPos, zombies[i].boxBody.GetPosition());
+                if (distance < con.ZOMBIE_KILL_RANGE) {
                     data.onLevelFailure();
                     loop.stop();
                 }
+                distance < minDistance && (minDistance = distance);
+            }
+            if (minDistance < con.HEARTBIT_RISE_RANGE) {
+              var fearLevel = 1 - minDistance / con.HEARTBIT_RISE_RANGE;
+              data.sounds.heartBeat.setSpeed(con.HEARTBIT_BASE + fearLevel * con.HEARTBIT_BOOST);
+            }
+            else {
+              data.sounds.heartBeat.setSpeed(con.HEARTBIT_BASE);
             }
         }
     };
