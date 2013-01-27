@@ -17,10 +17,11 @@ define(
         data.onLevelSuccess = function(){
             if (data.mapId >= 2) {
                 $('#msg-box').text('Congratulations! You have beat the game!');
+                $('#next-map').hide();
             } else {
                 $('#msg-box').text('Congratulations!');
+                $('#next-map').show();
             }
-            $('#next-map').show();
             $('#continue').hide();
             showSplash();
         };
