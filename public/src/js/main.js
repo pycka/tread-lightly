@@ -12,21 +12,6 @@ define(
         display.connect(document.getElementById('canvas'));
 
         // Play (should defer until server connection is up if co-op implemented).
-        onReady();
-
-  function onReady() {
-    var mapId = 0;
-    var map = data.maps[mapId]();
-    map.setId(mapId);
-  }
-//        function onReady() {
-//            data.mapId = 0;
-//            var map = data.maps[0]();
-//            data.world = new World();
-//            data.world.loadMap(map);
-//            data.world.start();
-//            loop.start(); // temporary
-//        }
 
 
         $('#new-game').click(function(){

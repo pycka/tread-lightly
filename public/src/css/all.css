@@ -1,6 +1,11 @@
 body {
   /*background: #000;*/
+  font-size: 14px;
 }
+h1 {
+  font-size: 110%;
+}
+
 #assets {
   display: none;
 }
@@ -101,4 +106,7 @@ body {
 }
 #menu #creadits-list.visible {
     display: block;
+}
+#creadits-list > div.about {
+  padding: 10px;
 }

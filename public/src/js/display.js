@@ -6,7 +6,7 @@ define(['const'], function (con) {
   var finishPointBg = 'gold';
   var finishPointBorder = 'yellow';
   var shadow = null; 
-  var transparent = 'transparent';
+  var transparent = 'rgba(0,0,0, 0.4)';
 
 
   var zombieImage = new Image();

@@ -17,15 +17,16 @@ define(function constants() {
 
     KEY_MOVE_MASK: 15,
 
+    PLAYER_RADIUS:         1.5,
     PLAYER_VELOCITY:       7,
     PLAYER_VELOCITY_DAMP:  7,
-    PLAYER_SIGHT_RANGE:    100,
+    PLAYER_SIGHT_RANGE:    120,
 
     FINISH_POINT_SIZE:     1,
 
     ACTOR_TYPE_PLAYER:     0,
     ACTOR_TYPE_ZOMBIE:     1,
 
-    ZOMBIE_RADIUS:         1,
+    ZOMBIE_RADIUS:         2,
   };
 });
