@@ -1,7 +1,11 @@
-define(['display', 'input', 'net', 'world'], function (display, input, net, world) {
+define(['display', 'input', 'net'], function (display, input, net) {
   var loop = {
-    start: function () {
+    run: false,
 
+    start: function () {
+      while (this.run) {
+        input.update();
+      }
     },
 
     stop: function () {

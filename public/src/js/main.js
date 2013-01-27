@@ -1,18 +1,25 @@
-define(['net', 'display', 'input', 'loop', 'world'],
-  function (net, display, input, loop, world) {
+define(['net', 'display', 'input', 'loop', 'data', 'components/World'],
+  function (net, display, input, loop, data, World) {
 
   var server = {
     addr: 'treadlightly',
     port: 8085
   };
 
+  // Initialize.
   input.connect();
-  display.connect(document.getElementsByTagName('canvas')[0]);
-  // net.connect(server, onConnect);
-  onConnect();
+  display.connect(document.getElementById('canvas'));
 
-  function onConnect() {
-    world.setMap(0);
+  // Play (should defer until server connection is up if co-op implemented).
+  onReady();
+
+  function onReady() {
+    var map = data.maps[0]();
+
+    data.world = new World();
+    data.world.loadMap(map);
+    data.world.start();
+
     loop.start(); // temporary
   }
 
