@@ -1,6 +1,5 @@
-define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
+define(['components/Actor', 'const', '/lib/js/box2d.js'], function (Actor, constants) {
   // Shortcuts
-  var MAP_SIZE     = 50;
   var b2Vec2       = Box2D.Common.Math.b2Vec2;
   var b2BodyDef    = Box2D.Dynamics.b2BodyDef;
   var b2CircleShape= Box2D.Collision.Shapes.b2CircleShape;
@@ -14,11 +13,11 @@ define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
     this.actors = [];
     this.walls = [];
     this.finishActor = null;
+    this.playerActor = null;
   }
 
   /**
    * Borders restrict movement of objects inside the viewport (map).
-   * A map is a rectangle with MAP_SIZE side length.
    */
   World.prototype.genBorders = function () {
     var borderDef = new b2BodyDef();
@@ -26,9 +25,9 @@ define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
     var borderBody = this.boxWorld.CreateBody(borderDef);
 
     var vec0 = new b2Vec2(0, 0);
-    var vec1 = new b2Vec2(MAP_SIZE, 0);
-    var vec2 = new b2Vec2(MAP_SIZE, MAP_SIZE);
-    var vec3 = new b2Vec2(0, MAP_SIZE);
+    var vec1 = new b2Vec2(constants.MAP_WIDTH, 0);
+    var vec2 = new b2Vec2(constants.MAP_WIDTH, constants.MAP_HEIGHT);
+    var vec3 = new b2Vec2(0, constants.MAP_HEIGHT);
     var borderFixDef = new b2FixtureDef();
     borderFixDef.restitution = 1;
     borderFixDef.shape = new b2PolygonShape();
@@ -106,6 +105,7 @@ define(['components/Actor', '/lib/js/box2d.js'], function (Actor) {
     var playerFixDef = new Box2D.Dynamics.b2FixtureDef();
     playerFixDef.restitution = 1;
     playerFixDef.shape = new b2CircleShape(1);
+    playerBody.SetLinearDamping(constants.PLAYER_VELOCITY_DAMP);
     playerBody.CreateFixture(playerFixDef);
 
     var actor = new Actor();

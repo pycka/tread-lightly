@@ -29,8 +29,8 @@ define(['display', 'input', 'data', 'logic'], function (display, input, data, lo
 
     step: function step() {
       var world = loop.world;
+      logic.checkInput();
       if (loop.run) {
-        logic.checkInput();
         world.Step(1/60, 8, 4);
         logic.checkWorld();
         display.draw(world);
