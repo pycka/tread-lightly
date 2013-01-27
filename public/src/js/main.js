@@ -15,10 +15,10 @@ define(
         data.sounds.background.setVolume(30).play();
 
         data.onLevelSuccess = function(){
-            if (data.mapId >= data.maps.length -1) {
-                $('#msg-box').text('Zwycięstwo! Pokanałeś grę!');
+            if (data.mapId >= 2) {
+                $('#msg-box').text('Congratulations! You have beat the game!');
             } else {
-                $('#msg-box').text('Zwycięstwo! :)');
+                $('#msg-box').text('Congratulations!');
             }
             $('#next-map').show();
             $('#continue').hide();
@@ -28,7 +28,7 @@ define(
         data.onLevelFailure = function(){
             $('#next-map').hide();
             $('#continue').hide();
-            $('#msg-box').text('Przegrana! :(');
+            $('#msg-box').text('You have failed...');
             $('#overlay').show();
         };
 
@@ -44,9 +44,7 @@ define(
 
         $('#next-map').click(function(){
             data.mapId = typeof data.mapId === 'undefined' ? 0 : data.mapId;
-            if (data.mapId < data.maps.length - 1) {
-                data.mapId++;
-            }
+            data.mapId++;
             var map = data.maps[data.mapId]();
             data.world = new World();
             data.world.loadMap(map);
